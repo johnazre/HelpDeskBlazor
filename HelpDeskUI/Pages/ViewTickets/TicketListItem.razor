@@ -1,0 +1,14 @@
+﻿@using HelpDeskUI.Data.Tickets
+
+	<tr>
+		<th>@ticket.SubmittedBy</th>
+		<th>@ticket.Message</th>
+		<th>@ticket.IsCurrentlyBeingHandled</th>
+		<th>@ticket.IsComplete</th>
+		<th>@ticket.HandledBy</th>
+	</tr>
+
+@code {
+	[Parameter]
+	public TicketModel ticket { get; set; }
+}

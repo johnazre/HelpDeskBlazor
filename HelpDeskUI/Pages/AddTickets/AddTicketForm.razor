@@ -1,0 +1,24 @@
+﻿@using HelpDeskUI.Data.Tickets
+@inject TicketService  _ticketService;
+
+<h3>AddTicketForm</h3>
+
+<EditForm Model="@newTicket" OnValidSubmit="HandleValidSubmit">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+
+	<InputText id="name" @bind-Value="newTicket.Message" />
+
+	<button type="submit">Submit</button>
+</EditForm>
+
+@code {
+	private TicketModel newTicket = new TicketModel();
+
+	private void HandleValidSubmit()
+	{
+		_ticketService.AddNewTicket(newTicket);
+		newTicket.Message = "";
+	}
+
+}

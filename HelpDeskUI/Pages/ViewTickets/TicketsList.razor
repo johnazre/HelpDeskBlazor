@@ -1,0 +1,38 @@
+﻿@using HelpDeskUI.Data.Tickets
+@inject TicketService ticketService;
+
+<h3>TicketsList</h3>
+@if (tickets == null)
+{
+	<p>Loading...</p>
+}
+else
+{
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Submitted By</th>
+			<th scope="col">Message</th>
+			<th scope="col">Is Currently Being Handled</th>
+			<th scope="col">Is Completed</th>
+			<th scope="col">Handled By</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var ticket in @tickets)
+		{
+			<TicketListItem ticket="@ticket"  />
+		}
+	</tbody>
+</table>
+}
+
+
+@code {
+	List<TicketModel> tickets;
+
+	protected override async Task OnInitializedAsync()
+	{
+		tickets = await ticketService.GetTickets();
+	}
+}

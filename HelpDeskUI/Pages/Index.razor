@@ -1,0 +1,23 @@
+﻿@page "/"
+
+@inject NavigationManager NavigationManager
+
+<h1>Welcome to HelpDesk!</h1>
+
+<h2>Are you a student or an instructor?</h2>
+
+<button class="btn btn-lg btn-primary" @onclick="NavigateToStudentArea">Student</button>
+<button class="btn btn-lg btn-primary" @onclick="NavigateToInstructorArea">Instructor</button>
+
+@code {
+
+	public void NavigateToStudentArea()
+	{
+		NavigationManager.NavigateTo("/add-ticket");
+	}
+
+	public void NavigateToInstructorArea()
+	{
+		NavigationManager.NavigateTo("/view-tickets");
+	}
+}
